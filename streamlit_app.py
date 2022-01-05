@@ -94,17 +94,9 @@ def get_main():
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
 
 def draw_chart():
+    st.subheader('Metamon (Blue) & Kiss Land (Yellow)')
     df = pd.read_csv("data\metamon_price.csv")
-
-    # chart_data = pd.DataFrame(
-    #         np.random.randn(20, 3),
-    #         columns=['a', 'b', 'c']
-    #     )
     st.line_chart(df)
-
-    # reading the csv file
-    # df = pd.read_csv("data\metamon_price.csv")
-
 
 def get_egg():
     now = datetime.now()
