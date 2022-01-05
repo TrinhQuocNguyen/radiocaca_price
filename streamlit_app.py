@@ -8,6 +8,10 @@ from datetime import datetime
 import time
 import requests
 
+import csv
+
+
+
 def convert_kiss(row):
     # print(row)
     return '<a href="{}">{}</a>'.format(row['link_kiss'],  "Link")
@@ -41,11 +45,22 @@ st_autorefresh(interval= 5* 60 * 1000, key="dataframerefresh")
 def get_main():
     now = datetime.now()
     st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+
     metamon = layers.Metamon()
     df_metamon = metamon.get_price()
 
     kiss = layers.Kiss_Land()
     df_kiss = kiss.get_price()
+
+    # metamon and kiss
+    row = [df_metamon[1][0], df_kiss[1][0]]
+    # open the file in the write mode
+    with open('data\metamon_price.csv', 'a', encoding='UTF8') as f:
+        # create the csv writer
+        writer = csv.writer(f)
+
+        # write a row to the csv file
+        writer.writerow(row)
 
     harvard_n = layers.New_Harvard_N_Land()
     df_harvard_n = harvard_n.get_price()
@@ -75,7 +90,20 @@ def get_main():
     df_full['link_musk'] = df_full.apply(convert_musk, axis=1)
     df_full['link_metamon'] = df_full.apply(convert_metamon, axis=1)
 
+
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
+
+def draw_chart():
+    df = pd.read_csv("data\metamon_price.csv")
+
+    # chart_data = pd.DataFrame(
+    #         np.random.randn(20, 3),
+    #         columns=['a', 'b', 'c']
+    #     )
+    st.line_chart(df)
+
+    # reading the csv file
+    # df = pd.read_csv("data\metamon_price.csv")
 
 
 def get_egg():
@@ -108,8 +136,13 @@ def get_egg():
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
    
 def get_full_price():
+
+
+
     get_main()
+    draw_chart()
     get_egg()
+    
 
     
 
