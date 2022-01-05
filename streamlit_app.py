@@ -45,7 +45,6 @@ st_autorefresh(interval= 5* 60 * 1000, key="dataframerefresh")
 def get_main():
     now = datetime.now()
     st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
-
     metamon = layers.Metamon()
     df_metamon = metamon.get_price()
 
@@ -54,11 +53,12 @@ def get_main():
 
     # metamon and kiss
     row = [df_metamon[1][0], df_kiss[1][0]]
+    st.markdown('Metamon Lowest Price: **'+ str(df_metamon[1][0]) +'**.')
+    st.markdown('Kiss_Land Lowest Price: **'+ str(df_kiss[1][0]) +'**.')
     # open the file in the write mode
-    with open('data\metamon_price.csv', 'a', encoding='UTF8') as f:
+    with open('data\metamon_kiss.csv', 'a', encoding='UTF8') as f:
         # create the csv writer
         writer = csv.writer(f)
-
         # write a row to the csv file
         writer.writerow(row)
 
@@ -67,6 +67,14 @@ def get_main():
 
     musk_usm = layers.Musk_Land()
     df_musk_usm = musk_usm.get_price()
+
+    land = [df_metamon[1][0], df_kiss[1][0],df_harvard_n[1][0],df_musk_usm[1][0]]
+    # open the file in the write mode
+    with open('data\land.csv', 'a', encoding='UTF8') as f:
+        # create the csv writer
+        writer = csv.writer(f)
+        # write a row to the csv file
+        writer.writerow(land)
 
     df_full = pd.DataFrame({
         'METAMON' : df_metamon[1],
@@ -93,9 +101,10 @@ def get_main():
 
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
 
-def draw_chart():
-    st.subheader('Metamon (Blue) & Kiss Land (Yellow)')
-    df = pd.read_csv("data\metamon_price.csv")
+def draw_chart_metamon():
+    st.subheader('Metamon & Kiss Land Graph')
+    df = pd.read_csv("data\metamon_kiss.csv")
+    print(df)
     st.line_chart(df)
 
 def get_egg():
@@ -106,6 +115,17 @@ def get_egg():
 
     potion = layers.Potion()
     df_potion = potion.get_price()
+
+    # egg and potion
+    row = [df_egg[1][0], df_potion[1][0]]
+    st.markdown('Egg Lowest Price: **'+ str(df_egg[1][0]) +'**.')
+    st.markdown('Potion Lowest Price: **'+ str(df_potion[1][0]) +'**.')
+    # open the file in the write mode
+    with open('data\egg.csv', 'a', encoding='UTF8') as f:
+        # create the csv writer
+        writer = csv.writer(f)
+        # write a row to the csv file
+        writer.writerow(row)
 
     dragon = layers.Dragon_Fruit_Dog()
     df_dragon = dragon.get_price()
@@ -126,16 +146,21 @@ def get_egg():
     df_full['link_dragon'] = df_full.apply(convert_dragon, axis=1)
 
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
-   
+
+
+def draw_chart_egg():
+    st.subheader('Egg & Potion Graph')
+    df = pd.read_csv("data\egg.csv")
+    print(df)
+    st.line_chart(df)
+
+
 def get_full_price():
 
-
-
     get_main()
-    draw_chart()
+    draw_chart_metamon()
     get_egg()
-    
+    draw_chart_egg() 
 
-    
 
 st.dataframe(get_full_price())
