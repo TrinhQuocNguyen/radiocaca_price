@@ -56,7 +56,7 @@ def get_main():
     st.markdown('Metamon Lowest Price: **'+ str(df_metamon[1][0]) +'**.')
     st.markdown('Kiss_Land Lowest Price: **'+ str(df_kiss[1][0]) +'**.')
     # open the file in the write mode
-    with open('data\metamon_kiss.csv', 'a', encoding='UTF8') as f:
+    with open('data\metamon_kiss.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
         writer = csv.writer(f)
         # write a row to the csv file
@@ -68,9 +68,9 @@ def get_main():
     musk_usm = layers.Musk_Land()
     df_musk_usm = musk_usm.get_price()
 
-    land = [df_metamon[1][0], df_kiss[1][0],df_harvard_n[1][0],df_musk_usm[1][0]]
+    land = [now.strftime("%d/%m/%Y %H:%M:%S"),df_metamon[1][0], df_kiss[1][0],df_harvard_n[1][0],df_musk_usm[1][0]]
     # open the file in the write mode
-    with open('data\land.csv', 'a', encoding='UTF8') as f:
+    with open('data\land.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
         writer = csv.writer(f)
         # write a row to the csv file
@@ -104,7 +104,6 @@ def get_main():
 def draw_chart_metamon():
     st.subheader('Metamon & Kiss Land Graph')
     df = pd.read_csv("data\metamon_kiss.csv")
-    print(df)
     st.line_chart(df)
 
 def get_egg():
@@ -121,7 +120,7 @@ def get_egg():
     st.markdown('Egg Lowest Price: **'+ str(df_egg[1][0]) +'**.')
     st.markdown('Potion Lowest Price: **'+ str(df_potion[1][0]) +'**.')
     # open the file in the write mode
-    with open('data\egg.csv', 'a', encoding='UTF8') as f:
+    with open('data\egg.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
         writer = csv.writer(f)
         # write a row to the csv file
@@ -151,7 +150,6 @@ def get_egg():
 def draw_chart_egg():
     st.subheader('Egg & Potion Graph')
     df = pd.read_csv("data\egg.csv")
-    print(df)
     st.line_chart(df)
 
 
