@@ -9,31 +9,10 @@ import time
 import requests
 
 import csv
+import super_hero
 
 
 
-def convert_kiss(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_kiss'],  "Link")
-def convert_harvard(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_harvard'], "Link")
-def convert_musk(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_musk'], "Link")
-def convert_metamon(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_metamon'], "Link")
-def convert_egg(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_egg'], "Link")
-def convert_potion(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_potion'], "Link")
-
-def convert_dragon(row):
-    # print(row)
-    return '<a href="{}">{}</a>'.format(row['link_dragon'], "Link")
 
 # update every minute (60*1000)
 st_autorefresh(interval= 5* 60 * 1000, key="dataframerefresh")
@@ -93,10 +72,10 @@ def get_main():
 
     })
 
-    df_full['link_kiss'] = df_full.apply(convert_kiss, axis=1)
-    df_full['link_harvard'] = df_full.apply(convert_harvard, axis=1)
-    df_full['link_musk'] = df_full.apply(convert_musk, axis=1)
-    df_full['link_metamon'] = df_full.apply(convert_metamon, axis=1)
+    df_full['link_kiss'] = df_full.apply(super_hero.convert_kiss, axis=1)
+    df_full['link_harvard'] = df_full.apply(super_hero.convert_harvard, axis=1)
+    df_full['link_musk'] = df_full.apply(super_hero.convert_musk, axis=1)
+    df_full['link_metamon'] = df_full.apply(super_hero.convert_metamon, axis=1)
 
 
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
@@ -115,6 +94,18 @@ def get_egg():
     potion = layers.Potion()
     df_potion = potion.get_price()
 
+    y_diamond = layers.Yellow_Diamond()
+    df_y_diamond = y_diamond.get_price()
+
+    p_diamond = layers.Purple_Diamond()
+    df_p_diamond = p_diamond.get_price()
+
+    b_diamond = layers.Black_Diamond()
+    df_b_diamond = b_diamond.get_price()
+
+    dragon = layers.Dragon_Fruit_Dog()
+    df_dragon = dragon.get_price()
+
     # egg and potion
     row = [df_egg[1][0], df_potion[1][0]]
     st.markdown('Egg Lowest Price: **'+ str(df_egg[1][0]) +'**.')
@@ -126,8 +117,20 @@ def get_egg():
         # write a row to the csv file
         writer.writerow(row)
 
-    dragon = layers.Dragon_Fruit_Dog()
-    df_dragon = dragon.get_price()
+
+    # egg and potion
+    row_dragon_purple_black = [df_dragon[1][0], df_p_diamond[1][0], df_b_diamond[1][0]]
+    st.markdown('Dragon Fruit Lowest Price: **'+ str(df_dragon[1][0]) +'**.')
+    st.markdown('Purple Diamond Lowest Price: **'+ str(df_p_diamond[1][0]) +'**.')
+    st.markdown('Black Diamond Lowest Price: **'+ str(df_b_diamond[1][0]) +'**.')
+    # open the file in the write mode
+    with open('data\dragon_purple_black.csv', 'a', newline='', encoding='UTF8') as f:
+        # create the csv writer
+        writer = csv.writer(f)
+        # write a row to the csv file
+        writer.writerow(row_dragon_purple_black)
+
+
 
     df_full = pd.DataFrame({
         'EGG' : df_egg[1],
@@ -136,13 +139,26 @@ def get_egg():
         'POTION' : df_potion[1],
         'link_potion' : df_potion[2],
 
+        'YELLOW_DIAMOND' : df_y_diamond[1],
+        'link_y_diamond' : df_y_diamond[2],
+
         'DRAGON_FRUIT' : df_dragon[1],
         'link_dragon' : df_dragon[2],
+        
+        'PURPLE_DIAMOND' : df_p_diamond[1],
+        'link_p_diamond' : df_p_diamond[2],
+        
+        'BLACK_DIAMOND' : df_b_diamond[1],
+        'link_b_diamond' : df_b_diamond[2],
+
     })
 
-    df_full['link_egg'] = df_full.apply(convert_egg, axis=1)
-    df_full['link_potion'] = df_full.apply(convert_potion, axis=1)
-    df_full['link_dragon'] = df_full.apply(convert_dragon, axis=1)
+    df_full['link_egg'] = df_full.apply(super_hero.convert_egg, axis=1)
+    df_full['link_potion'] = df_full.apply(super_hero.convert_potion, axis=1)
+    df_full['link_y_diamond'] = df_full.apply(super_hero.convert_y_diamond, axis=1)
+    df_full['link_dragon'] = df_full.apply(super_hero.convert_dragon, axis=1)
+    df_full['link_p_diamond'] = df_full.apply(super_hero.convert_p_diamond, axis=1)
+    df_full['link_b_diamond'] = df_full.apply(super_hero.convert_b_diamond, axis=1)
 
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
 
@@ -152,6 +168,10 @@ def draw_chart_egg():
     df = pd.read_csv("data\egg.csv")
     st.line_chart(df)
 
+def draw_chart_dragon_purple_black():
+    st.subheader('Dragon_Fruit & Purple Diamon & Black Diamond')
+    df = pd.read_csv("data\dragon_purple_black.csv")
+    st.line_chart(df)
 
 def get_full_price():
 
@@ -159,6 +179,7 @@ def get_full_price():
     draw_chart_metamon()
     get_egg()
     draw_chart_egg() 
+    draw_chart_dragon_purple_black()
 
 
 st.dataframe(get_full_price())

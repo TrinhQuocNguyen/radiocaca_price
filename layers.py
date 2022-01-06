@@ -93,6 +93,36 @@ class Dragon_Fruit_Dog(Item):
         # api-endpoint
         self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=26&tokenType&tokenId=-1"
 
+class Yellow_Diamond(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=0"
+
+class Purple_Diamond(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=1"
+
+class Black_Diamond(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=2"
+
+class Ding(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=12&tokenType&tokenId=-1"
+
+class SpaceXNaut_Dog(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=9&tokenType&tokenId=-1"
+
 
 class Metamon(Item):
     def __init__(self):
