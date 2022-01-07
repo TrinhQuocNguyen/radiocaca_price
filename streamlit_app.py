@@ -173,7 +173,15 @@ def draw_chart_dragon_purple_black():
     df = pd.read_csv("data\dragon_purple_black.csv")
     st.line_chart(df)
 
+
+def get_in_egg_price():
+    in_egg = layers.InEgg()
+    df_in_egg = in_egg.get_price()
+
+    print(df_in_egg)
+
 def get_full_price():
+    # get_in_egg_price()
 
     get_main()
     draw_chart_metamon()
