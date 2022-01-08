@@ -33,7 +33,7 @@ def get_main():
     # metamon and kiss
     row = [df_metamon[1][0], df_kiss[1][0]]
     st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'METAMON Lowest Price  : '+ str(df_metamon[1][0]) + '</p>', unsafe_allow_html=True) 
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'KISS LAND Lowest Price: '+ str(df_kiss[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:AntiqueWhite; font-size: 20px;">' + 'KISS LAND Lowest Price: '+ str(df_kiss[1][0]) + '</p>', unsafe_allow_html=True) 
 
     # open the file in the write mode
     with open('data\metamon_kiss.csv', 'a', newline='', encoding='UTF8') as f:
