@@ -95,8 +95,8 @@ def get_egg():
 
     # egg and potion
     row = [df_egg[1][0], df_potion[1][0]]
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'EGG Lowest Price   : '+ str(df_egg[1][0]) + '</p>', unsafe_allow_html=True) 
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'POTION Lowest Price: '+ str(df_potion[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:GoldenRod; font-size: 20px;">' + 'EGG Lowest Price   : '+ str(df_egg[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:Green; font-size: 20px;">' + 'POTION Lowest Price: '+ str(df_potion[1][0]) + '</p>', unsafe_allow_html=True) 
     # open the file in the write mode
     with open('data\egg.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
@@ -126,7 +126,7 @@ def get_yellow_diamond():
 
     # Yellow Diamond
     row_yellow = [df_y_diamond[1][0]]
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'YELLOW DIAMOND Lowest Price: '+ str(df_y_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:Yellow; font-size: 20px;">' + 'YELLOW DIAMOND Lowest Price: '+ str(df_y_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
 
     # open the file in the write mode
     with open('data\yellow_diamond.csv', 'a', newline='', encoding='UTF8') as f:
@@ -158,9 +158,9 @@ def get_dragon_fruit():
 
     # dragon fruit, purple diamond, black diamond
     row_dragon_purple_black = [df_dragon[1][0], df_p_diamond[1][0], df_b_diamond[1][0]]
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'DRAGON FRUIT Lowest Price: '+ str(df_dragon[1][0]) + '</p>', unsafe_allow_html=True) 
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'PURPLE DIAMOND Lowest Price: '+ str(df_p_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
-    st.markdown('<p style="font-family:sans-serif; color:Red; font-size: 20px;">' + 'BLACK DIAMOND Lowest Price: '+ str(df_b_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:DeepPink; font-size: 20px;">' + 'DRAGON FRUIT Lowest Price: '+ str(df_dragon[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:Purple; font-size: 20px;">' + 'PURPLE DIAMOND Lowest Price: '+ str(df_p_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
+    st.markdown('<p style="font-family:sans-serif; color:Black; font-size: 20px;">' + 'BLACK DIAMOND Lowest Price: '+ str(df_b_diamond[1][0]) + '</p>', unsafe_allow_html=True) 
     # open the file in the write mode
     with open('data\dragon_purple_black.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
