@@ -23,7 +23,7 @@ st_autorefresh(interval= 5* 60 * 1000, key="dataframerefresh")
 
 def get_main():
     now = datetime.now()
-    st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+    st.subheader('PUBLIC PRICE - Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
     metamon = layers.Metamon()
     df_metamon = metamon.get_price()
 
