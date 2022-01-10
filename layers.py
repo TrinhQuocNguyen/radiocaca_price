@@ -1,17 +1,9 @@
 import streamlit as st
 import requests
 
-def make_clickable(link):
-    # target _blank to open new window
-    # extract clickable text to display for your link
-    text = link.split('=')[1]
-    return f'<a target="_blank" href="{link}">{text}</a>'
-
 def convert(row):
     #print(row)
     return '<a href="{}">{}</a>'.format(row['link'],  row.name)
-
-
 
 class Item():
     def __init__(self):
