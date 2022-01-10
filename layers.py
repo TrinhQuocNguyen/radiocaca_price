@@ -46,26 +46,6 @@ class Item():
 
         return refined_data
 
-
-class InItem():
-    def __init__(self):
-        # api-endpoint
-        self.URL = ""
-        # defining a params dict for the parameters to be sent to the API
-        self.data = {
-            'address':"0xd8c079aaabb85f1141d0f0a03aec382632e3c368",
-            'type':'6',
-            'orderType':'2',
-            'orderId':'-1',
-            'pageSize':'10',
-            'orderAmount':'',
-            'accesstoken':'wMCiUmyz+vFYnOFUGXmkmg==',
-            'connect-method':'MetaMask',
-            'networkChainName':'Binance Smart Chain',
-            'connect-signMsg':'LogIn-e5262556-35a7-b1ba-2d1e-5eca9d5ca45e',
-            'connect-sign':'0x95ccec7d9f5c64c08cbab174fe84f2365d804b2bba74981d3cc844586766c3b44001ce6a9c8338b22cdf0b9c060b11bfc4b68bc4da172ce68b430e49dc6f4c1a1c'
-        }
-
     def refine_data(self, data):
         refined_data = []
         id = []
@@ -125,22 +105,6 @@ class Egg(Item):
         super().__init__()
         # api-endpoint
         self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=17&tokenType&tokenId=-1"
-
-class InEgg(InItem):
-    def __init__(self):
-        super().__init__()
-        # api-endpoint
-        self.URL = "https://metamon-api.radiocaca.com/usm-api/shop-order/sellList"
-        # defining a params dict for the parameters to be sent to the API
-        self.data = {
-            'address':"0xd8c079aaabb85f1141d0f0a03aec382632e3c368",
-            'type':'6',
-            'orderType':'2',
-            'orderId':'-1',
-            'pageSize':'10',
-            'orderAmount':''
-        }
-
 
 class Potion(Item):
     def __init__(self):
