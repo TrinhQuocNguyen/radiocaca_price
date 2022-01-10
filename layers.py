@@ -54,18 +54,6 @@ class Item():
         
         return refined_data
 
-    def get_price(self):
-        # sending get request and saving the response as response object
-        r = requests.post(url = self.URL, data = self.data)
-        
-        # extracting data in json format
-        res_data = r.json()
-        print(res_data)
-        # refined_data = self.refine_data(data)
-
-        return res_data
-
-
 class Kiss_Land(Item):
     def __init__(self):
         super().__init__()
