@@ -1,9 +1,6 @@
 import streamlit as st
 import requests
 
-def convert(row):
-    #print(row)
-    return '<a href="{}">{}</a>'.format(row['link'],  row.name)
 
 class Item():
     def __init__(self):
@@ -36,22 +33,6 @@ class Item():
         data = r.json()
         refined_data = self.refine_data(data)
 
-        return refined_data
-
-    def refine_data(self, data):
-        refined_data = []
-        id = []
-        fixed_price = []
-        link = []
-        for i in data['list']:
-            id.append(i['id'] )
-            fixed_price.append(i['fixed_price'] )
-            link_text = "https://market.radiocaca.com/#/market-place/" + str(i['id'])
-            link.append(link_text)
-        refined_data.append(id)
-        refined_data.append(fixed_price)
-        refined_data.append(link)
-        
         return refined_data
 
 class Kiss_Land(Item):
