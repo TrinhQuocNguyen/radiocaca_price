@@ -47,53 +47,6 @@ class Item():
         return refined_data
 
 
-class InItem():
-    def __init__(self):
-        # api-endpoint
-        self.URL = ""
-        # defining a params dict for the parameters to be sent to the API
-        self.data = {
-            'address':"0xd8c079aaabb85f1141d0f0a03aec382632e3c368",
-            'type':'6',
-            'orderType':'2',
-            'orderId':'-1',
-            'pageSize':'10',
-            'orderAmount':'',
-            'accesstoken':'wMCiUmyz+vFYnOFUGXmkmg==',
-            'connect-method':'MetaMask',
-            'networkChainName':'Binance Smart Chain',
-            'connect-signMsg':'LogIn-e5262556-35a7-b1ba-2d1e-5eca9d5ca45e',
-            'connect-sign':'0x95ccec7d9f5c64c08cbab174fe84f2365d804b2bba74981d3cc844586766c3b44001ce6a9c8338b22cdf0b9c060b11bfc4b68bc4da172ce68b430e49dc6f4c1a1c'
-        }
-
-    def refine_data(self, data):
-        refined_data = []
-        id = []
-        fixed_price = []
-        link = []
-        for i in data['list']:
-            id.append(i['id'] )
-            fixed_price.append(i['fixed_price'] )
-            link_text = "https://market.radiocaca.com/#/market-place/" + str(i['id'])
-            link.append(link_text)
-        refined_data.append(id)
-        refined_data.append(fixed_price)
-        refined_data.append(link)
-        
-        return refined_data
-
-    def get_price(self):
-        # sending get request and saving the response as response object
-        r = requests.post(url = self.URL, data = self.data)
-        
-        # extracting data in json format
-        res_data = r.json()
-        print(res_data)
-        # refined_data = self.refine_data(data)
-
-        return res_data
-
-
 class Kiss_Land(Item):
     def __init__(self):
         super().__init__()
@@ -177,13 +130,25 @@ class Ding(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=12&tokenType&tokenId=-1"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=12&tokenType&tokenId=-1"
 
 class SpaceXNaut_Dog(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=9&tokenType&tokenId=-1"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=9&tokenType&tokenId=-1"
+
+class Bake_Musk_Mixer(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=11&tokenType&tokenId=-1"
+
+class Raca_Punk(Item):
+    def __init__(self):
+        super().__init__()
+        # api-endpoint
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=28&tokenType&tokenId=-1"
 
 
 class Metamon(Item):
