@@ -1,17 +1,6 @@
 import streamlit as st
 import requests
 
-def make_clickable(link):
-    # target _blank to open new window
-    # extract clickable text to display for your link
-    text = link.split('=')[1]
-    return f'<a target="_blank" href="{link}">{text}</a>'
-
-def convert(row):
-    #print(row)
-    return '<a href="{}">{}</a>'.format(row['link'],  row.name)
-
-
 
 class Item():
     def __init__(self):
@@ -27,7 +16,7 @@ class Item():
         link = []
         for i in data['list']:
             id.append(i['id'] )
-            fixed_price.append(i['fixed_price'] )
+            fixed_price.append(float(i['fixed_price'])/float(i['count']))
             link_text = "https://market.radiocaca.com/#/market-place/" + str(i['id'])
             link.append(link_text)
         refined_data.append(id)
@@ -45,7 +34,6 @@ class Item():
         refined_data = self.refine_data(data)
 
         return refined_data
-
 
 class Kiss_Land(Item):
     def __init__(self):
@@ -77,29 +65,13 @@ class Egg(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=17&tokenType&tokenId=-1"
-
-class InEgg(InItem):
-    def __init__(self):
-        super().__init__()
-        # api-endpoint
-        self.URL = "https://metamon-api.radiocaca.com/usm-api/shop-order/sellList"
-        # defining a params dict for the parameters to be sent to the API
-        self.data = {
-            'address':"0xd8c079aaabb85f1141d0f0a03aec382632e3c368",
-            'type':'6',
-            'orderType':'2',
-            'orderId':'-1',
-            'pageSize':'10',
-            'orderAmount':''
-        }
-
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=17&tokenType&tokenId=-1"
 
 class Potion(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=15&tokenType&tokenId=-1"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=15&tokenType&tokenId=-1"
 
 
 class Dragon_Fruit_Dog(Item):
@@ -112,19 +84,19 @@ class Yellow_Diamond(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=0"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=16&tokenType&tokenId=0"
 
 class Purple_Diamond(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=1"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=16&tokenType&tokenId=1"
 
 class Black_Diamond(Item):
     def __init__(self):
         super().__init__()
         # api-endpoint
-        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=fixed_price&order=asc&name=&saleType&category=16&tokenType&tokenId=2"
+        self.URL = "https://market-api.radiocaca.com/nft-sales?pageNo=1&pageSize=20&sortBy=single_price&order=asc&name=&saleType&category=16&tokenType&tokenId=2"
 
 class Ding(Item):
     def __init__(self):

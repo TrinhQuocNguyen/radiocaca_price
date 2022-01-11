@@ -23,7 +23,7 @@ st_autorefresh(interval= 5* 60 * 1000, key="dataframerefresh")
 
 def get_main():
     now = datetime.now()
-    st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+    st.subheader('PUBLIC PRICE - Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
     metamon = layers.Metamon()
     df_metamon = metamon.get_price()
 
@@ -80,13 +80,13 @@ def get_main():
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
 
 def draw_chart_metamon():
-    st.subheader('Metamon & Kiss Land Graph')
+    st.subheader('PUBLIC PRICE - Metamon & Kiss Land Graph')
     df = pd.read_csv("data\metamon_kiss.csv")
     st.line_chart(df)
 
 def get_egg():
     now = datetime.now()
-    st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+    st.subheader('PUBLIC PRICE - Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
     egg = layers.Egg()
     df_egg = egg.get_price()
 
@@ -120,7 +120,7 @@ def get_egg():
 
 def get_yellow_diamond():
     now = datetime.now()
-    st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+    st.subheader('PUBLIC PRICE - Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
     y_diamond = layers.Yellow_Diamond()
     df_y_diamond = y_diamond.get_price()
 
@@ -146,7 +146,7 @@ def get_yellow_diamond():
 
 def get_dragon_fruit():
     now = datetime.now()
-    st.subheader('Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
+    st.subheader('PUBLIC PRICE - Last Update: '+ now.strftime("%d/%m/%Y %H:%M:%S"))
     p_diamond = layers.Purple_Diamond()
     df_p_diamond = p_diamond.get_price()
 
@@ -187,17 +187,17 @@ def get_dragon_fruit():
     st.write(df_full.to_html(escape=False), unsafe_allow_html=True)
 
 def draw_chart_egg():
-    st.subheader('Egg & Potion Graph')
+    st.subheader('PUBLIC PRICE - Egg & Potion Graph')
     df = pd.read_csv("data\egg.csv")
     st.line_chart(df)
 
 def draw_chart_yellow():
-    st.subheader('Yellow Diamond Graph')
+    st.subheader('PUBLIC PRICE - Yellow Diamond Graph')
     df = pd.read_csv("data\yellow_diamond.csv")
     st.line_chart(df)
 
 def draw_chart_dragon_purple_black():
-    st.subheader('Dragon_Fruit & Purple Diamon & Black Diamond')
+    st.subheader('PUBLIC PRICE - Dragon_Fruit & Purple Diamon & Black Diamond')
     df = pd.read_csv("data\dragon_purple_black.csv")
     st.line_chart(df)
 
