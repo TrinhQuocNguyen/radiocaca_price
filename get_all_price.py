@@ -66,8 +66,20 @@ def get_dragon_fruit():
     dragon = layers.Dragon_Fruit_Dog()
     df_dragon = dragon.get_price()
 
+    ding = layers.Ding()
+    df_ding = ding.get_price()
+    
+    space = layers.SpaceXNaut_Dog()
+    df_space = space.get_price()
+
+    bake = layers.Bake_Musk_Mixer()
+    df_bake = bake.get_price()
+
+    raca_punk = layers.Raca_Punk()
+    df_raca_punk = raca_punk.get_price()
+
     # dragon fruit, purple diamond, black diamond
-    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0]]
+    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0], df_ding[1][0],df_space[1][0],df_bake[1][0],df_raca_punk[1][0]]
     # open the file in the write mode
     with open('data\log_dragon.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
