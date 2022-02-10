@@ -85,7 +85,7 @@ def get_dragon_fruit():
     df_raca_punk = raca_punk.get_price()
 
     # dragon fruit, purple diamond, black diamond
-    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0], df_ding[1][0],df_space[1][0],df_bake[1][0],df_bake[1][0]]
+    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0], df_ding[1][0],df_space[1][0],df_bake[1][0],df_raca_punk[1][0]]
     # open the file in the write mode
     with open('data\log_dragon.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
@@ -96,7 +96,7 @@ def get_dragon_fruit():
     # print("Current Dragon Fruit, Ding, SpaceX, Bake, Punk: ", row_dragon_purple_black)
     print("### At: "+ str(now.strftime("%d/%m/%Y %H:%M:%S")))
     print("Dragon Fruit = " + str(df_dragon[1][0])   + ", Ding = " + str(df_ding[1][0]))
-    print("SpaceX = " + str(df_space[1][0]) + ", Bake = " + str(df_bake[1][0]) + ", Punk = " + str(df_bake[1][0]))    
+    print("SpaceX = " + str(df_space[1][0]) + ", Bake = " + str(df_bake[1][0]) + ", Punk = " + str(df_raca_punk[1][0]))    
     
 
 def get_full_price():
