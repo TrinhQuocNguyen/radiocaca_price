@@ -29,7 +29,10 @@ def get_metamon():
         writer = csv.writer(f)
         writer.writerow(row_metamon)
 
-    print("Current Metamon price: ", row_metamon)
+    # print("Current Metamon, Kiss, Harvard, Musk: ", row_metamon)
+    print("### At: "+ str(now.strftime("%d/%m/%Y %H:%M:%S")))
+    print("Metamon = " + str(float(df_metamon[1][0]))   + ", Kiss = " + str(df_kiss[1][0]))
+    print("Harvard = " + str(df_harvard_n[1][0]) + ", Musk = " + str(df_musk_usm[1][0]))
 
 
 
@@ -57,7 +60,10 @@ def get_egg():
         writer = csv.writer(f)
         writer.writerow(row_egg)
 
-    print("Current Egg price: ", row_egg)
+    # print("Current Egg, Potion, Yellow, Purple, Black: ", row_egg)
+    print("### At: "+ str(now.strftime("%d/%m/%Y %H:%M:%S")))
+    print("Egg = " + str(df_egg[1][0])   + ", Potion = " + str(df_potion[1][0]) + ", Yellow = " + str(df_y_diamond[1][0]))
+    print("Purple = " + str(df_p_diamond[1][0]) + ", Black = " + str(df_b_diamond[1][0]))
 
 
 def get_dragon_fruit():
@@ -79,7 +85,7 @@ def get_dragon_fruit():
     df_raca_punk = raca_punk.get_price()
 
     # dragon fruit, purple diamond, black diamond
-    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0], df_ding[1][0],df_space[1][0],df_bake[1][0],df_raca_punk[1][0]]
+    row_dragon_purple_black = [now.strftime("%d/%m/%Y %H:%M:%S"), df_dragon[1][0], df_ding[1][0],df_space[1][0],df_bake[1][0],df_bake[1][0]]
     # open the file in the write mode
     with open('data\log_dragon.csv', 'a', newline='', encoding='UTF8') as f:
         # create the csv writer
@@ -87,7 +93,10 @@ def get_dragon_fruit():
         # write a row to the csv file
         writer.writerow(row_dragon_purple_black)
 
-    print("Current Dragon Fruit price: ", row_dragon_purple_black)
+    # print("Current Dragon Fruit, Ding, SpaceX, Bake, Punk: ", row_dragon_purple_black)
+    print("### At: "+ str(now.strftime("%d/%m/%Y %H:%M:%S")))
+    print("Dragon Fruit = " + str(df_dragon[1][0])   + ", Ding = " + str(df_ding[1][0]))
+    print("SpaceX = " + str(df_space[1][0]) + ", Bake = " + str(df_bake[1][0]) + ", Punk = " + str(df_bake[1][0]))    
     
 
 def get_full_price():

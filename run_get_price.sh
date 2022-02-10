@@ -1,0 +1,1 @@
+python get_all_price.py
